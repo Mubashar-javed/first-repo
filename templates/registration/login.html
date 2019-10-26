@@ -1,0 +1,16 @@
+{% extends 'basic_app/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% if user.is_authenticated %}
+    {% block body_block %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <small>Don't have an account? <a href="http://127.0.0.1:8000/basicapp/register/">Click Here</a></small><br><br>
+            <input type="submit" class="btn btn-success" value="Login">
+        </form>
+    {% endblock body_block %}
+{% else %}
+    <p>Login <a href="/login"> Here </a></p>
+{% endif %}
